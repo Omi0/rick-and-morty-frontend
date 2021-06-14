@@ -4,11 +4,9 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Character, CharacterParams } from '@models/character';
 import { Paginated } from '@models/paginated';
-import { ApiService } from './api.service';
+import { ApiService } from '@services/api.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CharactersService {
   constructor(private httpClient: HttpClient, private apiService: ApiService) {}
 

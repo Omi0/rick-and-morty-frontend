@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './modules/core/core.module';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { DateInterceptor } from '@interceptors/date.interceptor';
+import { appRoutes } from './app.routes';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: DateInterceptor, multi: true }],
+  imports: [BrowserModule, CoreModule.forRoot(), RouterModule.forRoot(appRoutes), ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

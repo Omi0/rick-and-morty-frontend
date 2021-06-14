@@ -2,7 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { CharactersService } from './characters.service';
 import { Resources } from '@models/resource';
-import { ApiService } from './api.service';
+import { ApiService } from '../../../services/api.service';
 import { of } from 'rxjs';
 import { Paginated } from '@models/paginated';
 import { Character } from '@models/character';
@@ -38,7 +38,7 @@ describe('CharactersService', () => {
     });
   });
 
-  describe('getCharacter()', () => {
+  describe('get()', () => {
     it('should return response of type Character', () => {
       const id: number = 1;
       const responseStub: Character = {
@@ -55,7 +55,7 @@ describe('CharactersService', () => {
     });
   });
 
-  describe('getCharacters()', () => {
+  describe('getAll()', () => {
     it('should return response of type Paginated<Character[]>', () => {
       const responseStub: Paginated<Character[]> = {
         info: {} as any,

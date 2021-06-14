@@ -1,4 +1,4 @@
-import { Nullable } from './nullable';
+import { Nullable } from '../modules/core/models/nullable';
 
 export interface Paginated<T> {
   info: PaginatedInfo;

@@ -13,13 +13,13 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "emitDecoratorMetadata": false,
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
       "@environments/*": ["src/environments/*"],
-      "@interceptors/*": ["src/app/interceptors/*"],
       "@services/*": ["src/app/services/*"],
       "@helpers/*": ["src/app/helpers/*"],
       "@models/*": ["src/app/models/*"]
