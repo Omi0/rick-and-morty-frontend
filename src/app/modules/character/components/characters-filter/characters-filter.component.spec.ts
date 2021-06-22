@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { CharactersFilterComponent } from './characters-filter.component';
 
 describe('CharactersFilterComponent', () => {
@@ -8,7 +8,8 @@ describe('CharactersFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CharactersFilterComponent ]
+      declarations: [ CharactersFilterComponent ],
+      imports: [FormsModule]
     })
     .compileComponents();
   });

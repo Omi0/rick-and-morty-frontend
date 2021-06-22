@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Character } from '@models/character';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Nullable } from 'src/app/modules/core/models/nullable';
 import { CharactersService } from '../../services/characters.service';
 
 @Component({
@@ -7,7 +12,13 @@ import { CharactersService } from '../../services/characters.service';
   styleUrls: ['./character-view.component.scss'],
 })
 export class CharacterViewComponent implements OnInit {
-  constructor(private charactersService: CharactersService) {}
+  public character$!: Observable<Character | undefined>;
+  constructor(private route: ActivatedRoute, private router: Router, private charactersService: CharactersService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const id: Nullable<string> = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.character$ = this.charactersService.getOne(parseInt(id)).pipe(catchError((err) => of(undefined)));
+    }
+  }
 }

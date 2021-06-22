@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { CharactersService } from '../../services/characters.service';
 import { CharacterViewComponent } from './character-view.component';
 
@@ -9,7 +10,7 @@ describe('CharacterViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [CharactersService],
       declarations: [CharacterViewComponent],
     }).compileComponents();

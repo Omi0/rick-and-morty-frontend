@@ -1,1 +1,18 @@
-<p>characters-filter works!</p>
+<form #form="ngForm">
+  <ng-container *ngTemplateOutlet="select; context: { options: statusSelect, control: 'status', name: 'Status' }"></ng-container>
+  <ng-container *ngTemplateOutlet="select; context: { options: genderSelect, control: 'gender', name: 'Gender' }"></ng-container>
+
+  <ng-template #select let-items="options" let-controlName="control" let-name="name">
+    <div *ngIf="items?.length">
+      <select ngModel [name]="controlName" (ngModelChange)="filter$.next(form.value)">
+        <option value="">{{ name ? 'Select ' + name : 'Please Select'}}</option>
+        <option *ngFor="let option of items" [value]="option.value">
+          {{ option.name }}
+        </option>
+      </select>
+    </div>
+  </ng-template>
+</form>
+
+
+

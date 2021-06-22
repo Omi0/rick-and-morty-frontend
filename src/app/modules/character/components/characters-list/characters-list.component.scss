@@ -1,0 +1,38 @@
+@import "variables";
+
+:host {
+  display: block;
+  padding-top: $filter-height;
+
+  app-characters-filter {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: block;
+    height: $filter-height;
+    background-color: $color-six;
+  }
+
+  app-infinite-scroll {
+    display: block;
+    height: calc(100vh - #{$filter-height});
+    overflow-y: auto;
+
+    ::ng-deep {
+      .item {
+        display: flex;
+        padding: $padding;
+        border-bottom: 1px solid $color-six;
+        cursor: pointer;
+
+        &:hover {
+            background: $color-two;
+        }
+
+        img {
+          padding-right: $padding;
+        }
+      }
+    }
+  }
+}
