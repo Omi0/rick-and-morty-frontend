@@ -45,7 +45,7 @@ describe('CharactersService', () => {
         id: id,
       } as any;
 
-      service.get(1).subscribe((res) => {
+      service.getOne(1).subscribe((res) => {
         expect(res).toEqual(responseStub);
       });
 
@@ -61,7 +61,7 @@ describe('CharactersService', () => {
         info: {} as any,
         results: [],
       };
-      service.getAll().subscribe((res) => {
+      service.getPage().subscribe((res) => {
         expect(res).toEqual(responseStub);
       });
 

@@ -10,13 +10,13 @@ import { ApiService } from '@services/api.service';
 export class CharactersService {
   constructor(private httpClient: HttpClient, private apiService: ApiService) {}
 
-  get(id: number): Observable<Character> {
+  getOne(id: number): Observable<Character> {
     return this.apiService
-      .getResourceUrlByType('characters')
+    .getResourceUrlByType('characters')
       .pipe(switchMap((url) => this.httpClient.get<Character>(`${url}/${id}`)));
   }
 
-  getAll(params?: Partial<CharacterParams>): Observable<Paginated<Character[]>> {
+  getPage(params?: Partial<CharacterParams>): Observable<Paginated<Character[]>> {
     return this.apiService
       .getResourceUrlByType('characters')
       .pipe(switchMap((url) => this.httpClient.get<Paginated<Character[]>>(url, { params })));
