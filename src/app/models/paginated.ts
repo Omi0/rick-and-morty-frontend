@@ -1,8 +1,8 @@
 import { Nullable } from '../modules/core/models/nullable';
 
-export interface Paginated<T> {
+export interface Paginated<T extends Iterable<any>> {
   info: PaginatedInfo;
-  results: T[];
+  results: T;
 }
 
 export interface PaginatedInfo {
