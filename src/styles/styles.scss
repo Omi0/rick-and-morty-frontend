@@ -1,0 +1,9 @@
+@import "~normalize.css";
+
+@import "./variables.scss";
+
+body {
+  color: $color-six;
+  background-color: $color-five;
+  font-family: $font-family;
+}
