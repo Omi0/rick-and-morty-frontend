@@ -24,6 +24,7 @@
         padding: $padding;
         border-bottom: 1px solid $color-six;
         text-decoration: none;
+        color: inherit;
 
         &:hover {
             background: $color-two;
