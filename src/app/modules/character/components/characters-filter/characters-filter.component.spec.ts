@@ -8,10 +8,9 @@ describe('CharactersFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CharactersFilterComponent ],
-      imports: [FormsModule]
-    })
-    .compileComponents();
+      declarations: [CharactersFilterComponent],
+      imports: [FormsModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,5 +21,25 @@ describe('CharactersFilterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it(`should not display select in template if statusSelect is empty`, () => {
+    component.statusSelect = [];
+    component.genderSelect = [];
+    fixture.detectChanges();
+    const element: HTMLElement = fixture.nativeElement;
+    const select: HTMLSelectElement = element.querySelector('select')!;
+    expect(select).toBeFalsy();
+  });
+
+  it(`should display status select in template`, () => {
+    const statusSelectStub = { name: 'Alive', value: 'alive' };
+    component.statusSelect = [statusSelectStub];
+    component.genderSelect = [];
+    fixture.detectChanges();
+    const element: HTMLElement = fixture.nativeElement;
+    const select: HTMLSelectElement = element.querySelector('select')!;
+    expect(select.options.length).toBe(2); // incl default one
+    expect(select.options[1].value).toBe(statusSelectStub.value);
   });
 });

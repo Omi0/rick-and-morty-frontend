@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { getPageIdFromUrl } from '@helpers/functions';
 import { Character, CharacterParams } from '@models/character';
 import { Filter } from '@models/filter';
 import { Paginated } from '@models/paginated';
@@ -39,14 +40,6 @@ export class CharactersListComponent implements OnInit {
     );
   }
 
-  getPageIdFromUrl(url: Nullable<string>): number | undefined {
-    if (!url) return;
-    const nextPageUrl = new URL(url);
-    const urlSearchParams = new URLSearchParams(nextPageUrl.searchParams);
-    const pageId = urlSearchParams.get('page');
-    return pageId ? parseInt(pageId) : undefined;
-  }
-
   loadFirstPage(filter: Filter): void {
     this.infiniteScroll.nativeElement.scrollTo(0, 0);
     this.param$.next({
@@ -56,7 +49,7 @@ export class CharactersListComponent implements OnInit {
   }
 
   loadNextPage(nextPageUrl: Nullable<string>): void {
-    const pageId = this.getPageIdFromUrl(nextPageUrl);
+    const pageId = getPageIdFromUrl(nextPageUrl);
     if (pageId) {
       this.param$.next({
         ...this.param$.value,

@@ -22,7 +22,8 @@
       "@environments/*": ["src/environments/*"],
       "@services/*": ["src/app/services/*"],
       "@helpers/*": ["src/app/helpers/*"],
-      "@models/*": ["src/app/models/*"]
+      "@models/*": ["src/app/models/*"],
+      "@testing/*": ["src/app/testing/*"]
     }
   },
   "angularCompilerOptions": {
