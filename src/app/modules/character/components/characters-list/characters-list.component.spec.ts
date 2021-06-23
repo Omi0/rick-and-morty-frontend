@@ -1,6 +1,8 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Character, CharacterParams } from '@models/character';
 import { Paginated } from '@models/paginated';
 import { paginatedCharacters } from '@testing/paginated-characters';
@@ -18,10 +20,10 @@ describe('CharactersListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [CharactersService],
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      providers: [{ provide: CharactersService, useClass: MockCharactersService }],
       declarations: [CharactersListComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
 
@@ -47,5 +49,25 @@ describe('CharactersListComponent', () => {
     fixture.detectChanges();
     const element: HTMLElement = fixture.nativeElement;
     expect(element.textContent).toContain('No results found');
+  });
+
+  it(`should display page$ list in template`, () => {
+    component.ngOnInit();
+    fixture.detectChanges();
+    const element: HTMLElement = fixture.nativeElement;
+    const items: HTMLCollectionOf<Element> = element.getElementsByClassName('item');
+    expect(items).toBeTruthy();
+    expect(items.length).toBe(2);
+    expect(items[0].textContent).toContain(paginatedCharacters.results[0].name);
+    expect(items[0].textContent).toContain(paginatedCharacters.results[0].status);
+    expect(items[0].textContent).toContain(paginatedCharacters.results[0].species);
+    expect(items[0].textContent).toContain(paginatedCharacters.results[0].gender);
+  });
+
+  it(`should set routerLink for .item`, () => {
+    component.page$ = of(paginatedCharacters);
+    const debugElement: DebugElement = fixture.debugElement;
+    const item: DebugElement = debugElement.query(By.css('.item'));
+    expect(item.nativeElement.getAttribute('href')).toEqual('/1');
   });
 });

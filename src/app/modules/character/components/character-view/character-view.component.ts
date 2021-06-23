@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Character } from '@models/character';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Nullable } from 'src/app/modules/core/models/nullable';
+import { Character } from '@models/character';
+import { Nullable } from '@models/nullable';
 import { CharactersService } from '../../services/characters.service';
 
 @Component({

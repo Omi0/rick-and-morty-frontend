@@ -3,9 +3,9 @@ import { getPageIdFromUrl } from '@helpers/functions';
 import { Character, CharacterParams } from '@models/character';
 import { Filter } from '@models/filter';
 import { Paginated } from '@models/paginated';
+import { Nullable } from '@models/nullable';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { concatMap, map, pairwise, startWith } from 'rxjs/operators';
-import { Nullable } from 'src/app/modules/core/models/nullable';
 import { CharactersService } from '../../services/characters.service';
 
 @Component({

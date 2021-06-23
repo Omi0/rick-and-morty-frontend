@@ -1,4 +1,4 @@
-import { Nullable } from "../modules/core/models/nullable";
+import { Nullable } from "@models/nullable";
 
 /**
  * Returns true if provided value is not-empty object only

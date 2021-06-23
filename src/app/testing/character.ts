@@ -1,7 +1,7 @@
 import { Character } from "@models/character";
 
 export const stubCharacter: Character = {
-  id: 2,
+  id: 1,
   name: 'Morty Smith',
   status: 'Alive',
   species: 'Human',

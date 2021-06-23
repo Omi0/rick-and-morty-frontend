@@ -4,7 +4,7 @@
   <ng-container *ngIf="page?.results?.length; else noResults">
     <app-infinite-scroll #infiniteScroll (scrolled)="loadNextPage(page.info.next)">
       <ng-container *ngFor="let item of page.results">
-        <div class="item" [routerLink]="[item.id]">
+        <a class="item" [routerLink]="[item.id]">
           <img [src]="item.image" [alt]="item.name" width="200" height="200" />
           <div class="description">
             <h2>{{ item.name }}</h2>
@@ -13,7 +13,7 @@
             <div>Gender: {{ item.gender }}</div>
             <div>Created: {{ item.created | date: "shortDate" }}</div>
           </div>
-        </div>
+        </a>
       </ng-container>
     </app-infinite-scroll>
   </ng-container>
