@@ -45,3 +45,4 @@ Functions    : 87.1% ( 27/31 )
 Lines        : 92.41% ( 73/79 )
 ```
 * Implement RouteReuseStrategy for CharactersListComponent route. This will massively reduce API request on CharactersListComponent, as well as will allow us to restore scrolling position after coming back from CharacterViewComponent
+* Lazyload images
