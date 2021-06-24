@@ -1,6 +1,6 @@
 # Rick and Morty Frontend
 
-This is an Angular test applicaiton which consumes https://rickandmortyapi.com
+This is an Angular test applicaiton which consumes https://rickandmortyapi.com. Objective of this applicaiton is to show different techniques and approaches in building Angular applicaiton utilizing SOLID design principle.
 
 Application is hosted by Firebase Hosting https://rick-and-morty-frontend.web.app
 
@@ -35,14 +35,16 @@ npm run test
 npm run build
 ```
 
-# Ways To Improve
-
-* Increase test coverage. Coverage Summary:
+# Test Coverage Report
 ```
 Statements   : 92.55% ( 87/94 )
 Branches     : 81.58% ( 31/38 )
 Functions    : 87.1% ( 27/31 )
 Lines        : 92.41% ( 73/79 )
 ```
-* Implement RouteReuseStrategy for CharactersListComponent route. This will massively reduce API request on CharactersListComponent, as well as will allow us to restore scrolling position after coming back from CharacterViewComponent
+
+# Ways To Improve
+
+* Increase test coverage.
+* Implement RouteReuseStrategy for CharactersListComponent route. This will massively reduce API request on CharactersListComponent, as well as will allow us to restore scrolling position after coming back from CharacterViewComponent.
 * Lazyload images
